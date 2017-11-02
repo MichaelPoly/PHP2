@@ -1,0 +1,694 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+}
+@mixin reference($decoration,$size,$weight,$color) {
+  text-decoration: $decoration;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin justify-content($pos1) {
+  -webkit-justify-content: $pos1;
+  -ms-flex-pack: $pos1;
+  justify-content: $pos1;
+}
+@mixin align-items($pos3) {
+  -webkit-align-items: $pos3;
+  -ms-flex-align: $pos3;
+  align-items: $pos3;
+}
+@mixin block($width,$height,$borderWidth,$borderStyle,$borderColor,$borderRadius) {
+  width: $width;
+  height: $height;
+  border-width: $borderWidth;
+  border-style: $borderStyle;
+  border-color: $borderColor;
+  border-radius: $borderRadius;
+}
+header {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(100%, 10vh, 0px, solid, green, 0);
+  background-color: orange;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: green;
+  }
+}
+body {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+}
+.main {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(80%, auto, 0px, solid, green, 0);
+  .nav {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(100%, 5vh, 0px, solid, green, 0);
+    .buttonAct {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(24%, 99%, 0px, solid, green, 0);
+      background-color: green;
+      p {
+        color: lightgreen;
+        font-size: 1.2em;
+      }
+    }
+    .button {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(24%, 99%, 0px, solid, green, 0);
+      background-color: lightgreen;
+      p {
+        color: green;
+        font-size: 1.2em;
+      }
+    }
+    .button:hover {
+      background-color: green;
+    }
+    .button:hover > p {
+      color: lightgreen;
+    }
+  }
+}
+.task {
+    @include block(80%, auto, 0px, solid, green, 0);
+    p {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: green;
+      padding: 2%;
+    }
+}
+.centerG {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(flex-start);
+  @include block(95%, 70vh, 0px, solid, green, 0);
+  margin-top: 2%;
+}
+.center {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include justify-content(center);
+  @include align-items(flex-start);
+  @include block(95%, 70vh, 0px, solid, green, 0);
+  margin-top: 2%;
+  .itemShow{
+    position: absolute;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+    @include align-items(center);
+    @include block(80%, 70vh, 1px, solid, green, 10px);
+    box-shadow: 2px 2px 4px black;
+    background-color: white;
+    h2 {
+      color: green;
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 5%;
+    }
+    .infoBox {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include justify-content(flex-start);
+      @include align-items(center);
+      @include block(80%, 60%, 1px, solid, green, 0);
+      .imgBox {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include flex-direction(row);
+        @include justify-content(center);
+        @include align-items(flex-start);
+        @include block(60%, 90%, 1px, solid, green, 0);
+        .images {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          @include flex-direction(column);
+          @include justify-content(flex-start);
+          @include align-items(center);
+          @include block(20%, 100%, 1px, solid, green, 0);
+          img {
+            max-width: 98%;
+          }
+        }
+        .imgShow {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          @include justify-content(center);
+          @include align-items(center);
+          @include block(80%, 100%, 1px, solid, green, 0);
+          img {
+            max-height: 98%;
+            max-width: 98%;
+          }
+        }
+      }
+      .decribtionBox {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include justify-content(center);
+        @include align-items(flex-start);
+        @include block(40%, 90%, 1px, solid, green, 0);
+        p {
+          color: green;
+          margin: 1%;
+        }
+      }
+    }
+    .btnBox {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include justify-content(space-around);
+      @include align-items(center);
+      @include block(90%, 15%, 0px, solid, green, 0);
+      .btnItem {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include justify-content(center);
+        @include align-items(center);
+        @include block(20%, 40%, 0px, solid, green, 10px);
+        background-color: lightgreen;
+        box-shadow: 2px 2px 4px black;
+        p {
+          color: green;
+          font-weight: bold;
+        }
+      }
+      .btnItem:hover {
+        background-color: green;
+        p {
+          color: lightgreen;
+        }
+      }
+    }
+  }
+}
+.calc {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(45%, 50%, 0px, solid, green, 10px);
+  background-color: lightgreen;
+  .inputBlock {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(90%, 30%, 1px, solid, green, 10px);
+    background-color: lightgray;
+    .inputNum {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(60%, 20%, 0px, solid, green, 0);
+      label {
+        color: green;
+        input {
+          width: 95%;
+          height: 20%;
+          background-color: white;
+        }
+      }
+    }
+    .result {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(35%, 80%, 0px, solid, green, 0);
+      label {
+        color: green;
+        input {
+          width: 95%;
+          height: 80%;
+          background-color: white;
+        }
+      }
+    }
+  }
+  .operators {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(90%, 30%, 0px, solid, green, 0);
+    .operBtn {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include justify-content(center);
+      @include align-items(center);
+      @include block(10%, 35%, 0px, solid, green, 5px);
+      background-color: green;
+      box-shadow: 1px 1px 3px black;
+      p {
+        color: lightgreen;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        line-height: 2em;
+      }
+    }
+  }
+}
+.itemsBlock1 {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(space-around);
+  @include align-items(center);
+  @include block(100%, auto, 0px, solid, green, 0);
+}
+.itemsBlock {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-wrap(wrap);
+  @include justify-content(space-around);
+  @include align-items(center);
+  @include block(100%, auto, 1px, solid, green, 0);
+  .item {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include justify-content(space-around);
+    @include align-items(center);
+    @include block(20%, 20vh, 1px, solid, lightgreen, 5px);
+    box-shadow: 2px 2px 4px green;
+    margin-top: 2%;
+    img {
+      height: 35%;
+    }
+    h2 {
+      color: green;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    h3 {
+      color: orange;
+      font-size: 1.2em;
+    }
+  }
+  .item:hover {
+    box-shadow: 0px 0px 7px blue;
+  }
+}
+.btnNext {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(100%, 5vh, 1px, solid, lightgreen, 5px);
+  background-color: lightgreen;
+  box-shadow: 2px 2px 4px green;
+  margin-top: 2%;
+  p {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+.btnNext:hover {
+  @include block(100%, 5vh, 1px, solid, green, 5px);
+    background-color: green;
+  box-shadow: 2px 2px 4px lightgreen;
+  margin-top: 2%;
+  p {
+    color: lightgreen;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+.addImage {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(90%, 5vh, 0px, solid, lightgreen, 5px);
+  background-color: lightgreen;
+  margin: 1%;
+  p {
+    color: green;
+    font-weight: bold;
+  }
+}
+.images1 {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-wrap(wrap);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(90%, 80vh, 1px, solid, lightgreen, 5px);
+  .imgGalMin {
+    max-width: 15%;
+    margin: 1%;
+
+  }
+}
+.addForm{
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(60%, 30vh, 1px, solid, green, 10px);
+  box-shadow: 2px 2px 4px black;
+  background-color: white;
+  h2 {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1%;
+  }
+  .addImgForm {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    color: green;
+    font-size: 1em;
+    font-weight: bold;
+    input {
+      color: green;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 5%;
+    }
+  }
+}
+.registry {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(flex-start);
+  @include align-items(center);
+  @include block(20%, 30vh, 1px, solid, green, 0);
+  .regBtn {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(90%, 4vh, 0px, solid, green, 10px);
+    background-color: lightgreen;
+    margin-top: 1%;
+    p {
+      color: green;
+      font-weight: bold;
+    }
+  }
+  .basket {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(90%, 15vh, 1px, solid, green, 10px);
+    margin-top: 5%;
+    img {
+      max-height: 50%;
+    }
+    p {
+      color: green;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  }
+}
+.authorisation {
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(20vw, 20vh, 0px, solid, green, 10px);
+  background-color: lightgreen;
+  box-shadow: 1px 1px 3px green;
+  transform: translateY(10vh);
+  label {
+    margin-left: 10%;
+    color: blue;
+    font-weight: bold;
+  }
+  .loginIn {
+    width: 80%;
+    height: 15%;
+    border-radius: 5px;
+    margin-left: 10%;
+    margin-top: 2%;
+  }
+  .btn {
+    width: 50%;
+    height: 15%;
+    background-color: green;
+    color: lightgreen;
+    margin-left: 25%;
+    border-radius: 7px;
+    margin-top: 4%;
+  }
+}
+.registration {
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(40vw, 40vh, 0px, solid, green, 10px);
+  background-color: lightgreen;
+  box-shadow: 1px 1px 3px green;
+  transform: translateY(10vh);
+  .formTitle {
+    font-size: 1.5em;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+  }
+  .names {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    @include block(95%, 20%, 0px, solid, green, 0);
+    .namesN {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include align-items(flex-start);
+      @include justify-content(center);
+      @include block(32%, 90%, 0px, solid, green, 0);
+      label {
+        margin-left: 5%;
+        color: blue;
+        font-weight: bold;
+      }
+      .loginIn {
+        width: 90%;
+        height: 15%;
+        border-radius: 5px;
+        margin-top: 2%;
+      }
+    }
+  }
+  .loginBox {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(space-around);
+  @include block(95%, 30%, 0px, solid, green, 0);
+  label {
+    margin-left: 5%;
+    color: blue;
+    font-weight: bold;
+  }
+  .loginIn {
+    width: 95%;
+    height: 15%;
+    border-radius: 5px;
+    margin-top: 2%;
+  }
+  .pwdBox {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include align-items(flex-start);
+    @include justify-content(center);
+    @include block(50%, 98%, 0px, solid, green, 0);
+    label {
+      margin-left: 5%;
+      color: blue;
+      font-weight: bold;
+    }
+    .loginIn {
+      width: 95%;
+      height: 15%;
+      border-radius: 5px;
+      margin-top: 2%;
+    }
+  }
+}
+.btn {
+  width: 40%;
+  height: 10%;
+  background-color: green;
+  color: lightgreen;
+  border: none;
+  border-radius: 10px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  box-shadow: 1px 1px 4px black;
+}
+.btn:hover {
+  background-color: lighten(green, 10);
+  box-shadow: 1px 1px 2px black;
+  color: darken(lightgreen, 10);
+  }
+}
+.basketWindow {
+  position: absolute;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(flex-start);
+  @include block(60vw, 60vh, 1px, solid, green, 10px);
+  background-color: white;
+  box-shadow: 1px 1px 3px green;
+  transform: translateY(1vh);
+  h2 {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 2%;
+  }
+  .basketItem {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(space-between);
+    @include block(90%, 5%, 0px, solid, green, 0);
+    margin-top: 1%;
+    .iNum {
+      width: 3%;
+      color: green;
+      font-weight: bold;
+    }
+    .iName {
+      width: 50%;
+      color: green;
+      font-weight: bold;
+    }
+    .iQuan {
+      width: 10%;
+      color: green;
+      font-weight: bold;
+    }
+    .iPrice {
+      width: 20%;
+      color: green;
+      font-weight: bold;
+    }
+    .iDel {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(3%, 95%, 0px, solid, green, 5px);
+    }
+  }
+}
