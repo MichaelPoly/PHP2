@@ -118,6 +118,38 @@ function add_to_basket($link, $item, $quantity, $price, $userid)
   $result = mysqli_query($link, $query);
   if (!$result) die(mysqli_error($link));
 }
+define('DB_DRIVER','mysql');
+define('DB_HOST','localhost');
+define('DB_NAME','inet_shop');
+define('DB_USER','root');
+define('DB_PASS','');
+function orderConfirm($order_num, $orderId)
+{
+  try
+  {
+  	$connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME;
+  	$db = new PDO($connect_str,DB_USER,DB_PASS);
+    $num_rows1 = $db->exec("UPDATE `orders` SET order_num='" . $order_num . "' WHERE id='" . $orderId . "'");
+    $num_rows2 = $db->exec("UPDATE `orders` SET order_state='in_progress' WHERE id='" . $orderId . "'");
+  }
+  catch(PDOException $e)
+  {
+  	die("Error: ".$e->getMessage());
+  }
+}
+function addAdress($order_num, $adress)
+{
+  try
+  {
+  	$connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
+  	$db = new PDO($connect_str,DB_USER,DB_PASS);
+    $num_rows1 = $db->exec("UPDATE `orders` SET adress='" . $adress . "' WHERE order_num='" . $order_num . "'");
+  }
+  catch(PDOException $e)
+  {
+  	die("Error: ".$e->getMessage());
+  }
+}
 function show_basket($link, $userid)
 {
   $query = sprintf("SELECT * FROM orders INNER JOIN item ON orders.itemid=item.item_id WHERE clientid='%d' AND order_state='%s'", $userid, 'new');

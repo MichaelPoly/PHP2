@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $('.lkBtn').hide();
 var $items;
 var $user = {
   email: "newuser@newuser.ru",
@@ -11,6 +12,7 @@ var $user = {
   second_name: "Новый"
 };
 var $basket;
+var $history = [];
 function newOrder() {
   this.clientId = 1;
   this.totalPrice = 0;
@@ -82,6 +84,8 @@ function drawItemsBlock($itemsLimit) {
       $('.item').on('click', function () {
         var $itemId = this.id;
         $itemId = $itemId.slice(6);
+        $history.push($items[$itemId].item_id);
+        console.log($history);
         $('.center').append('<div class="itemShow"></div>');
         $('.itemShow').append('<h2>' + $items[$itemId].item_name + '</h2>');
         $('.itemShow').append('<div class="infoBox"></div>');
@@ -196,7 +200,8 @@ function drawItemsBlock($itemsLimit) {
               $user = data;
               if ($user) {
                 $('.errInfo').remove();
-                $('.registry').append('<p> Здравствуйте ' + data.first_name + '</p>');
+                $('.lkBtn').show();
+                $('.registry').append('<p class="regText"> Здравствуйте ' + data.first_name + '</p>');
                 console.log($user);
                 } else {
                 $('.regBtn').show();
@@ -305,7 +310,8 @@ function drawItemsBlock($itemsLimit) {
                     success: function (data) {
                         $user = data;
                         if ($user != false) {
-                          $('.registry').append('<p> Здравствуйте ' + data.first_name + '</p>');
+                          $('.lkBtn').show();
+                          $('.registry').append('<p class="regText"> Здравствуйте ' + data.first_name + '</p>');
                           $('.registration').remove();
                         } else {
                           document.querySelector('#login').placeholder = 'Логин уже занят';
@@ -361,7 +367,44 @@ function drawItemsBlock($itemsLimit) {
           }
         });
       });
+      $('.basketWindow').append('<div class="basketItem" id="basketBtn"></div>');
+      $('#basketBtn'). append('<div class="basketBtn" id="returnBtn"><p>Вернуться к покупкам</p></div>');
+      $('#basketBtn'). append('<form action="confirm_order.php" method="POST" class="basketForm"></form>');
+      $('.basketForm'). append('<input type="text" name="userid" value="'+ $user.id + '" hidden>');
+      $('.basketForm'). append('<input class="basketBtn1" id="nextBtn" type="submit" value="Оформить заказ">');
+      $('.basketBtn').on('click', function () {
+        $('.basketWindow').remove();
+      });
     }
+  });
+  $('.lkBtn').on('click', function () {
+    if (this.id == 'exit') {
+      var $logStr = 'login=newuser&password=1';
+      $.ajax({
+        type: 'POST',
+        url: 'login.php',
+        dataType: 'json',
+        data: $logStr,
+        response: 'text',
+        errrep: true,
+        error: function (num) {
+          console.log(num);
+        },
+        success: function (data) {
+            $user = data;
+            if ($user) {
+              $('.errInfo').remove();
+              $('.regText').remove();
+              $('.lkBtn').hide();
+              $('.regBtn').show();
+              $('.registry').append('<p class="regText"> Здравствуйте ' + data.first_name + '</p>');
+              }
+              $history = [];
+            refreshBusket();
+        }
+       });
+    } else {
 
+    }
   });
 });

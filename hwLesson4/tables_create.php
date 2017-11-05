@@ -85,6 +85,7 @@ add_item($link, "TN055", "Товар55", "462", "1590", "elefant1.png", "Опи�
 
 $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
                order_num VARCHAR(30) NULL,
+               adress VARCHAR(1024) NULL,
                clientid INT NOT NULL,
                itemid INT NOT NULL,
                quantity INT NOT NULL,

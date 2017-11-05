@@ -464,7 +464,26 @@ body {
   @include justify-content(flex-start);
   @include align-items(center);
   @include block(20%, 30vh, 1px, solid, green, 0);
+  p {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+  }
   .regBtn {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include justify-content(center);
+    @include align-items(center);
+    @include block(90%, 4vh, 0px, solid, green, 10px);
+    background-color: lightgreen;
+    margin-top: 1%;
+    p {
+      color: green;
+      font-weight: bold;
+    }
+  }
+  .lkBtn {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
@@ -689,6 +708,97 @@ body {
       @include align-items(center);
       @include justify-content(center);
       @include block(3%, 95%, 0px, solid, green, 5px);
+    }
+    .basketForm{
+      width: 30%;
+      height: 100%;
+      border: none;
+      .basketBtn1 {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include block(100%, 100%, 0px, solid, green, 5px);
+        background-color: lightgreen;
+        box-shadow: 3px 3px 3px green;
+      }
+    }
+    .basketBtn {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(30%, 95%, 0px, solid, green, 5px);
+      background-color: lightgreen;
+      box-shadow: 3px 3px 3px green;
+      p {
+        color: green;
+        font-weight: bold;
+      }
+    }
+  }
+}
+.addAdress {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(90%, 5vh, 0px, solid, green, 5px);
+  margin: 2%;
+  h2 {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+}
+.adressInput {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(80%, 60vh, 1px, solid, green, 5px);
+  background-color: lightgreen;
+  box-shadow: 3px 3px 3px green;
+  p {
+    margin-top: 25%;
+  }
+  h2 {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5%;
+  }
+  form {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    width: 90%;
+    height: 3vh;
+    .inAdr{
+      width: 60%;
+      height: 100%;
+      margin-right: 2%;
+    }
+    .btn {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(30%, 100%, 0px, solid, green, 5px);
+      background-color: green;
+      box-shadow: 3px 3px 3px black;
+      color: lightgreen;
+      font-weight: bold;
     }
   }
 }

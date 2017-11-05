@@ -1,0 +1,12 @@
+<div class="addAdress">
+  <h2>Ваш заказ № <?=$order_num?></h2>
+</div>
+<div class="adressInput">
+  <h2>Введите адрес для доставки заказа</h2>
+  <form class="adress" action="payment.php" method="post">
+    <input type="text" name="adress" value="" class="inAdr">
+    <input type="text" name="order_num" value="<?=$order_num?>" hidden>
+    <input type="submit" name="" value="Перейти к оплате" class="btn">
+  </form>
+  <p>* в дальнейшем сюда будет интегрирован модуль расчета стоимости доставки</p>
+</div>
