@@ -7,6 +7,7 @@ if (!empty($_POST)) {
   if ($user2 == false){
     $user1 = registration($link, $_POST["first_name"], $_POST["second_name"], $_POST["last_name"],
     $_POST["email"], $_POST["phone"], $_POST["login"], $_POST["password"]);
+    add_user_history($user1['id']);
     echo json_encode($user1);
     return json_encode($user1);
   } else return false;

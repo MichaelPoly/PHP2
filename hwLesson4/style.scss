@@ -496,6 +496,19 @@ body {
       color: green;
       font-weight: bold;
     }
+    .lkForm {
+      width: 100%;
+      height: 100%;
+      .lkBtn1 {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 10px;
+        background-color: lightgreen;
+        color: green;
+        font-weight: bold;
+      }
+    }
   }
   .basket {
     display: -ms-flexbox;

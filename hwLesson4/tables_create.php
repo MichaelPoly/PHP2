@@ -17,6 +17,18 @@ tableCreate($link, $tableName);
 add_client($link, "Новый Посетитель", "Новый", "Новый", "", "newuser@newuser.ru", "newuser", "1");
 
 
+$tableName11 = "user_history(id INT NOT NULL AUTO_INCREMENT,
+              client_id INT NOT NULL,
+              item_id1 INT NULL,
+              item_id2 INT NULL,
+              item_id3 INT NULL,
+              item_id4 INT NULL,
+              item_id5 INT NULL,
+              PRIMARY KEY (`id`))";
+tableCreate($link, $tableName11);
+$query = "ALTER TABLE user_history ADD FOREIGN KEY(`client_id`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
+mysqli_query($link, $query);
+
 $tableName1 = "item(item_id INT NOT NULL AUTO_INCREMENT,
               articul VARCHAR(30) NOT NULL,
               item_name VARCHAR(30) NOT NULL,

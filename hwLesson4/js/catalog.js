@@ -404,7 +404,36 @@ function drawItemsBlock($itemsLimit) {
         }
        });
     } else {
+      var $historyStr;
+      var $strH;
+      if ($history.length <= 5) {
+        for (var i = 0; i < $history.length; i++) {
+          $historyStr[i] = 'item' + i + '=' + $history[i] + '&';
+          $strH = $strH + $historyStr[i];
+        }
+      } else {
+        var j = 0;
+        for (var i = $history.length - 5; i < $history.length; i++) {
+          $historyStr[j] = 'item' + j + '=' + $history[i] + '&';
+          $strH = $strH + $historyStr[j];
+          j++;
+        }
+      }
+      $str = $str + 'client_id=' + $user.id;
+      $.ajax({
+        type: 'POST',
+        url: 'add_history.php',
+        dataType: 'json',
+        data: $str,
+        response: 'text',
+        errrep: true,
+        error: function (num) {
+          console.log(num);
+        },
+        success: function (data) {
 
+        }
+       });
     }
   });
 });

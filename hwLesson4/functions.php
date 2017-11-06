@@ -150,6 +150,31 @@ function addAdress($order_num, $adress)
   	die("Error: ".$e->getMessage());
   }
 }
+function add_user_history($clientid)
+{
+  try
+  {
+    $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
+    $db = new PDO($connect_str,DB_USER,DB_PASS);
+    $rows = $db->exec("INSERT INTO `user_history` (`client_id`, `item_id1`, `item_id2`, `item_id3`, `item_id4`, `item_id5`) VALUES
+    ('$clientid', null, null, null, null, null)
+    ");
+  }
+function readHistory($clientid)
+{
+  try
+  {
+    $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
+    $db = new PDO($connect_str,DB_USER,DB_PASS);
+    $result = $db->query("SELECT * FROM user_history WHERE client_id='$clientid'");
+    while($row = $result->fetch(PDO::FETCH_ASSOC));
+    return $row;
+  }
+  catch(PDOException $e)
+  {
+    die("Error: ".$e->getMessage());
+  }
+}
 function show_basket($link, $userid)
 {
   $query = sprintf("SELECT * FROM orders INNER JOIN item ON orders.itemid=item.item_id WHERE clientid='%d' AND order_state='%s'", $userid, 'new');
