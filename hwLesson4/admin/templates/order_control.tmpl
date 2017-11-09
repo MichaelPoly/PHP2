@@ -1,0 +1,27 @@
+<div class="mainStat">
+  <div class="left_side">
+    <a href="order_control.php">
+      <div class="adminBtn" id="orderC">
+        <p>Управление заказами</p>
+      </div>
+    </a>
+    <a href="settings.php">
+      <div class="adminBtn" id="adminSettings">
+        <p>Настройки</p>
+      </div>
+    </a>
+  </div>
+  <div class="infoWin">
+    <div class="orderRow">
+      <?php
+      echo "$order_num[0]";
+      echo "$client_id[0]";
+      echo "$total_price[0]";
+      echo "$adress[0]";
+      echo "$confirm_date[0]";
+      echo "<br>";
+      print_r($orders1);
+      ?>
+    </div>
+  </div>
+</div>

@@ -144,6 +144,7 @@ function addAdress($order_num, $adress)
   	$connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
   	$db = new PDO($connect_str,DB_USER,DB_PASS);
     $num_rows1 = $db->exec("UPDATE `orders` SET adress='" . $adress . "' WHERE order_num='" . $order_num . "'");
+    $num_rows2 = $db->exec("UPDATE `order_stat` SET adress='" . $adress . "' WHERE order_num='" . $order_num . "'");
   }
   catch(PDOException $e)
   {
@@ -160,6 +161,28 @@ function add_user_history($clientid)
     ('$clientid', null, null, null, null, null)
     ");
   }
+  catch(PDOException $e)
+  {
+    die("Error: ".$e->getMessage());
+  }
+}
+function add_new_order($order_num, $clientid, $total_price)
+{
+  try
+  {
+    $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
+    $db = new PDO($connect_str,DB_USER,DB_PASS);
+    date_default_timezone_set('Europe/Moscow');
+    $start_date = date('Y-m-d H:i');
+    $rows = $db->exec("INSERT INTO `order_stat` (`order_num`, `client_id`, `total_price`, `confirm_date`) VALUES
+    ('$order_num', '$clientid', '$total_price', '$start_date')
+    ");
+  }
+    catch(PDOException $e)
+    {
+    die("Error: ".$e->getMessage());
+    }
+}
 function readHistory($clientid)
 {
   try

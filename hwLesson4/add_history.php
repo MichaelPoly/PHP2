@@ -6,6 +6,7 @@
   $item4 = $_POST['item3'];
   $item5 = $_POST['item4'];
   $clientId = $_POST['client_id'];
-if ($item5 > 0) {
-  # code...
-}
+  if ($item5 > 0) {
+    # code...
+  }
+  $history = readHistory($clientid);

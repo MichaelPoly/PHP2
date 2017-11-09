@@ -1304,4 +1304,96 @@ body {
   font-weight: bold;
 }
 
+.mainStat {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 90%;
+  height: 80vh;
+  border-width: 1px;
+  border-style: solid;
+  border-color: green;
+  border-radius: 0px;
+  background-color: white;
+  box-shadow: 3px 3px 3px green;
+}
+.mainStat .left_side {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  justify-content: flex-start;
+  width: 28%;
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: green;
+  border-radius: 0px;
+  background-color: white;
+}
+.mainStat .left_side a {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 95%;
+  height: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: green;
+  border-radius: 0px;
+  background-color: lightgreen;
+  box-shadow: 3px 3px 3px green;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  color: green;
+  margin-top: 1%;
+}
+.mainStat .infoWin {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 70%;
+  height: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: green;
+  border-radius: 0px;
+  background-color: white;
+}
+
 /*# sourceMappingURL=style.css.map */

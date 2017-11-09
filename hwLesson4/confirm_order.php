@@ -21,10 +21,24 @@ foreach ($orderItems as $key => $value) {
 }
 date_default_timezone_set('Europe/Moscow');
 $dateNow = date('YmdHi');
-$order_num = 'C'. $clientid[2] .'D'. $dateNow;
+$order_num = 'C'. $clientid[3] .'D'. $dateNow;
 foreach ($id as $key => $value) {
   orderConfirm($order_num, $value);
 }
-
+$k = 0;
+foreach ($price as $key => $value) {
+  $tot_price[$k] = $value;
+  $k++;
+}
+$n = 0;
+foreach ($quantity as $key => $value) {
+  $tot_quantity[$n] = $value;
+  $n++;
+}
+$total_price = 0;
+for ($nn=0; $nn < $n; $nn++) {
+  $total_price = $total_price + (int)$tot_price[$nn] * (int)$tot_quantity[$nn];
+}
+add_new_order($order_num, $clientid[3], $total_price);
 include 'templates/add_adress.tmpl';
 include 'templates/footer.tmpl';

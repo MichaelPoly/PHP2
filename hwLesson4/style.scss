@@ -815,3 +815,47 @@ body {
     }
   }
 }
+.mainStat {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(90%, 80vh, 1px, solid, green, 0px);
+  background-color: white;
+  box-shadow: 3px 3px 3px green;
+  .left_side {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(flex-start);
+    @include block(28%, 100%, 1px, solid, green, 0px);
+    background-color: white;
+    a {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(95%, auto, 1px, solid, green, 0px);
+      background-color: lightgreen;
+      box-shadow: 3px 3px 3px green;
+      @include reference(none, 1em, bold, green);
+      margin-top: 1%;
+    }
+  }
+  .infoWin {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    @include block(70%, 100%, 1px, solid, green, 0px);
+    background-color: white;
+  }
+}

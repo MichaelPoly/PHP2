@@ -27,6 +27,18 @@ $tableName11 = "user_history(id INT NOT NULL AUTO_INCREMENT,
               PRIMARY KEY (`id`))";
 tableCreate($link, $tableName11);
 $query = "ALTER TABLE user_history ADD FOREIGN KEY(`client_id`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
+$tableName12 = "order_stat(order_num VARCHAR(30) NOT NULL,
+              client_id INT NOT NULL,
+              total_price INT NOT NULL,
+              adress VARCHAR(1024) NOT NULL,
+              confirm_date DATETIME NOT NULL,
+              send_date DATETIME NULL,
+              deliver_date DATETIME NULL,
+              end_date DATETIME NULL,
+              order_state VARCHAR(30) NOT NULL,
+              PRIMARY KEY (`order_num`))";
+tableCreate($link, $tableName12);
+$query = "ALTER TABLE order_stat ADD FOREIGN KEY(`client_id`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
 mysqli_query($link, $query);
 
 $tableName1 = "item(item_id INT NOT NULL AUTO_INCREMENT,
@@ -108,6 +120,8 @@ $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
                date DATE NOT NULL,
                PRIMARY KEY (`id`))";
  tableCreate($link, $tableName2);
+ $query = "ALTER TABLE orders ADD FOREIGN KEY(`order_num`) REFERENCES order_stat(`order_num`) ON UPDATE CASCADE ON DELETE CASCADE";
+ mysqli_query($link, $query);
 
  $query = "ALTER TABLE orders ADD FOREIGN KEY(`clientid`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
  mysqli_query($link, $query);
