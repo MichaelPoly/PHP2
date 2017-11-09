@@ -131,6 +131,7 @@ function orderConfirm($order_num, $orderId)
   	$db = new PDO($connect_str,DB_USER,DB_PASS);
     $num_rows1 = $db->exec("UPDATE `orders` SET order_num='" . $order_num . "' WHERE id='" . $orderId . "'");
     $num_rows2 = $db->exec("UPDATE `orders` SET order_state='in_progress' WHERE id='" . $orderId . "'");
+    $num_rows2 = $db->exec("UPDATE `order_stat` SET order_state='in_progress' WHERE order_num='" . $order_num . "'");
   }
   catch(PDOException $e)
   {
