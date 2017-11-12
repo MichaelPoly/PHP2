@@ -1,0 +1,61 @@
+<div class="orderInfoWin">
+  <h1>Заказ № {{orderNum}}</h1>
+  <div class="orderContent">
+    <h2>Состав заказа</h2>
+    <div class="infoTab">
+      <div class="itemRow">
+        <p class="orderInfo">Название товара</p>
+        <p class="orderInfo">Количество</p>
+        <p class="orderInfo">Стоимость</p>
+      </div>
+      {% for item in items %}
+        <div class="itemRow">
+
+          {% for k in item %}
+          <p class="orderInfo">{{k}}</p>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+
+    </div>
+  </div>
+  <div class="clientInfo">
+    <h2>Информация о покупателе</h2>
+    <div class="titles">
+      <p>Фамилия</p>
+      <p>Имя</p>
+      <p>Отчество</p>
+    </div>
+    <div class="FIO">
+      <p>{{lastName}}</p>
+      <p>{{firstName}}</p>
+      <p>{{secondName}}</p>
+    </div>
+    <h2>Контактная информация</h2>
+    <div class="titles">
+      <p>Телефон</p>
+      <p>E-mail</p>
+    </div>
+    <div class="FIO">
+      <p>{{phone}}</p>
+      <p>{{email}}</p>
+    </div>
+    <h2>Адрес доставки</h2>
+    <div class="adress">
+      <p>{{adress}}</p>
+    </div>
+  </div>
+  <div class="orderState">
+    <h2>Состояне заказа</h2>
+    <input list="state" class="orderStateInput" type="text" name="" value="{{order_state}}">
+    <datalist id="state">
+      <option value="in_progress">
+      <option value="Готов к отправке">
+      <option value="Отправлен">
+      <option value="Доставлен">
+      <option value="Завершен">
+    </datalist>
+    <p class="saveBtn " id="{{orderNum}}">Сохранить изменения</p>
+  </div>
+</div>

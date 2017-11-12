@@ -129,9 +129,9 @@ function orderConfirm($order_num, $orderId)
   {
   	$connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME;
   	$db = new PDO($connect_str,DB_USER,DB_PASS);
-    $num_rows1 = $db->exec("UPDATE `orders` SET order_num='" . $order_num . "' WHERE id='" . $orderId . "'");
-    $num_rows2 = $db->exec("UPDATE `orders` SET order_state='in_progress' WHERE id='" . $orderId . "'");
-    $num_rows2 = $db->exec("UPDATE `order_stat` SET order_state='in_progress' WHERE order_num='" . $order_num . "'");
+    $num_rows = $db->exec("UPDATE `orders` SET order_num='" . $order_num . "' WHERE id='" . $orderId . "'");
+    $num_rows1 = $db->exec("UPDATE `orders` SET order_state='in_progress' WHERE id='" . $orderId . "'");
+    $num_rows2 = $db->exec("UPDATE `order_stat` SET order_state_o='in_progress' WHERE order_num_o='" . $order_num . "'");
   }
   catch(PDOException $e)
   {
@@ -145,7 +145,7 @@ function addAdress($order_num, $adress)
   	$connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
   	$db = new PDO($connect_str,DB_USER,DB_PASS);
     $num_rows1 = $db->exec("UPDATE `orders` SET adress='" . $adress . "' WHERE order_num='" . $order_num . "'");
-    $num_rows2 = $db->exec("UPDATE `order_stat` SET adress='" . $adress . "' WHERE order_num='" . $order_num . "'");
+    $num_rows2 = $db->exec("UPDATE `order_stat` SET adress_o='" . $adress . "' WHERE order_num_o='" . $order_num . "'");
   }
   catch(PDOException $e)
   {
@@ -158,7 +158,7 @@ function add_user_history($clientid)
   {
     $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
     $db = new PDO($connect_str,DB_USER,DB_PASS);
-    $rows = $db->exec("INSERT INTO `user_history` (`client_id`, `item_id1`, `item_id2`, `item_id3`, `item_id4`, `item_id5`) VALUES
+    $rows = $db->exec("INSERT INTO `user_history` (`client_id_h`, `item_id1`, `item_id2`, `item_id3`, `item_id4`, `item_id5`) VALUES
     ('$clientid', null, null, null, null, null)
     ");
   }
@@ -175,9 +175,10 @@ function add_new_order($order_num, $clientid, $total_price)
     $db = new PDO($connect_str,DB_USER,DB_PASS);
     date_default_timezone_set('Europe/Moscow');
     $start_date = date('Y-m-d H:i');
-    $rows = $db->exec("INSERT INTO `order_stat` (`order_num`, `client_id`, `total_price`, `confirm_date`) VALUES
-    ('$order_num', '$clientid', '$total_price', '$start_date')
+    $rows = $db->exec("INSERT INTO `order_stat` (`order_num_o`, `client_id_o`, `total_price`, `confirm_date`, `order_state_o`) VALUES
+    ('$order_num', '$clientid', '$total_price', '$start_date', 'in_progress')
     ");
+    $num_rows = $db->exec("UPDATE `orders` SET confirmed='true' WHERE order_num='" . $order_num . "'");
   }
     catch(PDOException $e)
     {
@@ -190,7 +191,7 @@ function readHistory($clientid)
   {
     $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
     $db = new PDO($connect_str,DB_USER,DB_PASS);
-    $result = $db->query("SELECT * FROM user_history WHERE client_id='$clientid'");
+    $result = $db->query("SELECT * FROM user_history WHERE client_id_h='$clientid'");
     while($row = $result->fetch(PDO::FETCH_ASSOC));
     return $row;
   }
@@ -219,4 +220,34 @@ function show_basket($link, $userid)
     $result = mysqli_query($link, $query);
     if (!$result) die(mysqli_error($link));
     return mysqli_affected_rows($link);
+  }
+  function get_user_by_order($order_num)
+  {
+    try
+    {
+      $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
+      $db = new PDO($connect_str,DB_USER,DB_PASS);
+      $result = $db->query("SELECT `client_id_o` FROM order_stat WHERE order_num_o='$order_num'");
+      $row = $result->fetch(PDO::FETCH_ASSOC);
+      return $row;
+    }
+    catch(PDOException $e)
+    {
+      die("Error: ".$e->getMessage());
+    }
+  }
+  function get_user_by_id($client_id)
+  {
+    try
+    {
+      $connect_str = DB_DRIVER . ':host='. DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF8';
+      $db = new PDO($connect_str,DB_USER,DB_PASS);
+      $result = $db->query("SELECT * FROM clients WHERE id='$client_id'");
+      $row = $result->fetch(PDO::FETCH_ASSOC);
+      return $row;
+    }
+    catch(PDOException $e)
+    {
+      die("Error: ".$e->getMessage());
+    }
   }

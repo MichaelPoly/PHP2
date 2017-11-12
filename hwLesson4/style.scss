@@ -815,6 +815,15 @@ body {
     }
   }
 }
+.main_admin{
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+  @include block(95%, auto, 0px, solid, green, 0);
+}
 .mainStat {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -854,8 +863,251 @@ body {
     display: flex;
     @include flex-direction(column);
     @include align-items(center);
-    @include justify-content(center);
+    @include justify-content(flex-start);
     @include block(70%, 100%, 1px, solid, green, 0px);
     background-color: white;
   }
+  .orderRow {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(space-around);
+    @include block(100%, auto, 1px, solid, green, 0px);
+    background-color: white;
+    .orderInfo {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(flex-start);
+      @include block(18%, auto, 0px, solid, green, 0px);
+      color: green;
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+    .order_stat {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(flex-start);
+      @include block(10%, auto, 0px, solid, green, 0px);
+      color: green;
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+  }
+}
+.orderInfoWin {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(flex-start);
+  @include block(80%, 100%, 1px, solid, green, 0px);
+  background-color: white;
+  h1 {
+    color: green;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 2%;
+  }
+  .orderContent {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(flex-start);
+    @include block(95%, auto, 1px, solid, green, 0px);
+    background-color: white;
+    h2 {
+      color: green;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 1%;
+    }
+    .infoTab {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(column);
+      @include align-items(center);
+      @include justify-content(flex-start);
+      @include block(95%, auto, 1px, solid, green, 0px);
+      background-color: lightgray;
+      margin-bottom: 1%;
+    }
+    .itemRow {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(flex-start);
+      @include block(100%, auto, 0px, solid, green, 0px);
+      background-color: lightgray;
+      .orderInfo {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include flex-direction(row);
+        @include align-items(center);
+        @include justify-content(flex-start);
+        @include block(300%, auto, 1px, solid, green, 0px);
+        background-color: lightgreen;
+      }
+    }
+  }
+  .clientInfo {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    @include block(95%, auto, 1px, solid, green, 0px);
+    background-color: white;
+    h2 {
+      color: green;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 1%;
+    }
+    .titles {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(95%, auto, 0px, solid, green, 0px);
+      background-color: lightgreen;
+      margin: 1%;
+      p {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include block(33%, auto, 1px, solid, green, 0px);
+        color: green;
+        font-size: 1em;
+        font-weight: bold;
+      }
+    }
+    .FIO {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(95%, auto, 0px, solid, green, 0px);
+      background-color: white;
+      p {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include block(33%, 1em, 1px, solid, green, 0px);
+        color: green;
+        font-size: 1em;
+        font-weight: bold;
+      }
+    }
+    .adress {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(flex-start);
+      @include block(95%, auto, 0px, solid, green, 0px);
+      background-color: lightgreen;
+      p {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include block(95%, auto, 0px, solid, green, 0px);
+        color: green;
+        font-size: 1em;
+        font-weight: bold;
+      }
+    }
+  }
+  .orderState {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    @include block(90%, 3vh, 0px, solid, green, 0px);
+    background-color: lightgreen;
+    margin: 1%;
+    h2 {
+      color: green;
+      font-size: 1em;
+      font-weight: bold;
+      margin-right: 2%;
+    }
+    .orderStateInput {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(30%, auto, 1px, solid, green, 0px);
+      text-align: center;
+    }
+    .saveBtn {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(30%, auto, 0px, solid, green, 10px);
+      background-color: green;
+      color: lightgreen;
+      box-shadow: 2px 2px 3px black;
+      margin-left: 2%;
+    }
+    .saveBtn:hover {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      @include flex-direction(row);
+      @include align-items(center);
+      @include justify-content(center);
+      @include block(30%, auto, 1px, solid, green, 10px);
+      background-color: lightgreen;
+      color: green;
+      box-shadow: 1px 1px 2px black;
+      margin-left: 2%;
+    }
+  }
+}
+.nextBtn {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(center);
+  @include block(50%, auto, 0px, solid, green, 10px);
+  background-color: green;
+  color: lightgreen;
+  box-shadow: 2px 2px 3px black;
+  margin-left: 2%;
 }

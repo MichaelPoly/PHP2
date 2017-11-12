@@ -1,16 +1,50 @@
 $(document).ready(function () {
   $('.lkBtn').hide();
 var $items;
-var $user = {
-  email: "newuser@newuser.ru",
-  first_name: "Новый Посетитель",
-  id: 1,
-  last_name: "Новый",
-  login: "newuser",
-  password: "1",
-  phone: "",
-  second_name: "Новый"
-};
+if ($.cookie("ui")) {
+  var $user;
+  var $strLog = 'userId=' + $.cookie("ui");
+  $.ajax({
+    type: 'POST',
+    url: 'get_user.php',
+    dataType: 'json',
+    data: $strLog,
+    response: 'text',
+    errrep: true,
+    error: function (num) {
+      console.log(num);
+    },
+    success: function (data) {
+        $('.authorisation').remove();
+        $user = data;
+        if ($user) {
+          $('.regBtn').hide();
+          $('.errInfo').remove();
+          $('.lkBtn').show();
+          $('.registry').append('<p class="regText"> Здравствуйте ' + data.first_name + '</p>');
+          console.log($user);
+          } else {
+          $('.regBtn').show();
+          $('.basketMin').remove();
+          $('.errInfo').remove();
+          $('.registry').append('<p class="errInfo">Вы ввели неправильный логин или пароль</p>');
+        }
+        refreshBusket();
+    }
+   });
+} else {
+  var $user = {
+    email: "newuser@newuser.ru",
+    first_name: "Новый Посетитель",
+    id: 1,
+    last_name: "Новый",
+    login: "newuser",
+    password: "1",
+    phone: "",
+    second_name: "Новый"
+  };
+}
+
 var $basket;
 var $history = [];
 function newOrder() {
@@ -198,6 +232,7 @@ function drawItemsBlock($itemsLimit) {
           success: function (data) {
               $('.authorisation').remove();
               $user = data;
+              document.querySelector('#clientIdLk').value = $user.id;
               if ($user) {
                 $('.errInfo').remove();
                 $('.lkBtn').show();
@@ -309,6 +344,7 @@ function drawItemsBlock($itemsLimit) {
                     },
                     success: function (data) {
                         $user = data;
+                        document.querySelector('#clientIdLk').value = $user.id;
                         if ($user != false) {
                           $('.lkBtn').show();
                           $('.registry').append('<p class="regText"> Здравствуйте ' + data.first_name + '</p>');
@@ -435,5 +471,19 @@ function drawItemsBlock($itemsLimit) {
         }
        });
     }
+  });
+  $('.pay').on('click', function () {
+    if (this.id == 'payAfter') {
+        console.log(this.id);
+        document.querySelector('#payAfter').checked = true;
+        document.querySelector('#payOnSite').checked = false;
+    } else {
+        console.log(this.id);
+        document.querySelector('#payAfter').checked = false;
+        document.querySelector('#payOnSite').checked = true;
+    }
+  });
+  $('.nextBtn').on('click', function () {
+    location = 'index.html';
   });
 });

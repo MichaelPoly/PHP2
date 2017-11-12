@@ -13,15 +13,22 @@
   </div>
   <div class="infoWin">
     <div class="orderRow">
-      <?php
-      echo "$order_num[0]";
-      echo "$client_id[0]";
-      echo "$total_price[0]";
-      echo "$adress[0]";
-      echo "$confirm_date[0]";
-      echo "<br>";
-      print_r($orders1);
-      ?>
+      <p class="orderInfo">Номер заказа</p>
+      <p class="orderInfo">Покупатель</p>
+      <p class="orderInfo">Стоимость заказа</p>
+      <p class="orderInfo">Адрес доставки</p>
+      <p class="orderInfo">Дата оформления заказа</p>
+      <p class="orderInfo">Статус заказа</p>
     </div>
+    {% for item in order %}
+      <div class="orderRow" id="{{item.order_num}}">
+
+        {% for k in item %}
+        <p class="orderInfo">{{k}}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+
   </div>
 </div>

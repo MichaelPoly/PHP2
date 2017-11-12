@@ -18,7 +18,7 @@ add_client($link, "Новый Посетитель", "Новый", "Новый",
 
 
 $tableName11 = "user_history(id INT NOT NULL AUTO_INCREMENT,
-              client_id INT NOT NULL,
+              client_id_h INT NOT NULL,
               item_id1 INT NULL,
               item_id2 INT NULL,
               item_id3 INT NULL,
@@ -26,19 +26,20 @@ $tableName11 = "user_history(id INT NOT NULL AUTO_INCREMENT,
               item_id5 INT NULL,
               PRIMARY KEY (`id`))";
 tableCreate($link, $tableName11);
-$query = "ALTER TABLE user_history ADD FOREIGN KEY(`client_id`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
-$tableName12 = "order_stat(order_num VARCHAR(30) NOT NULL,
-              client_id INT NOT NULL,
+$query = "ALTER TABLE user_history ADD FOREIGN KEY(`client_id_h`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
+mysqli_query($link, $query);
+$tableName12 = "order_stat(order_num_o VARCHAR(30) NOT NULL,
+              client_id_o INT NOT NULL,
               total_price INT NOT NULL,
-              adress VARCHAR(1024) NOT NULL,
+              adress_o VARCHAR(1024) NOT NULL,
               confirm_date DATETIME NOT NULL,
               send_date DATETIME NULL,
               deliver_date DATETIME NULL,
               end_date DATETIME NULL,
-              order_state VARCHAR(30) NOT NULL,
-              PRIMARY KEY (`order_num`))";
+              order_state_o VARCHAR(30) NULL,
+              PRIMARY KEY (`order_num_o`))";
 tableCreate($link, $tableName12);
-$query = "ALTER TABLE order_stat ADD FOREIGN KEY(`client_id`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
+$query = "ALTER TABLE order_stat ADD FOREIGN KEY(`client_id_o`) REFERENCES clients(`id`) ON UPDATE CASCADE ON DELETE CASCADE";
 mysqli_query($link, $query);
 
 $tableName1 = "item(item_id INT NOT NULL AUTO_INCREMENT,
@@ -114,8 +115,8 @@ $tableName2 = "orders(id INT NOT NULL AUTO_INCREMENT,
                itemid INT NOT NULL,
                quantity INT NOT NULL,
                price INT NOT NULL,
-               confirmed BOOLEAN NOT NULL,
-               payed BOOLEAN NOT NULL,
+               confirmed BOOLEAN NULL,
+               payed BOOLEAN NULL,
                order_state VARCHAR(30) NOT NULL,
                date DATE NOT NULL,
                PRIMARY KEY (`id`))";
